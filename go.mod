@@ -1,6 +1,6 @@
 module workerShifts
 
-go 1.22
+go 1.20
 
 require (
 	github.com/charmbracelet/huh v0.6.0
