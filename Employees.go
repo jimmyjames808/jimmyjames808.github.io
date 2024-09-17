@@ -15,7 +15,7 @@ type Employees struct {
 	Employees []Employee `json:"employees"`
 }
 
-func (e *Employees) NewEmployee(name string, payPerHour float64, ip string) {
+func (e *Employees) NewEmployee(name string, payPerHour float64) {
 	for i := 1; i <= len(e.Employees); i++ {
 		if e.Employees[i-1].Name == name {
 			e.Employees[i-1].PayPerHour = payPerHour
@@ -23,7 +23,7 @@ func (e *Employees) NewEmployee(name string, payPerHour float64, ip string) {
 			return
 		}
 	}
-	e.Employees = append(e.Employees, Employee{name, len(e.Employees) + 1, []Shift{}, payPerHour, 0.0, ip, e})
+	e.Employees = append(e.Employees, Employee{name, len(e.Employees) + 1, []Shift{}, payPerHour, 0.0, e})
 	e.saveToJson()
 }
 

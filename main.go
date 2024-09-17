@@ -60,12 +60,10 @@ func allWebPage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if strings.ToLower(pathBase) == "createuserbackend" {
-		if params.Get("name") != "James%20Graham" || strings.Contains(r.RemoteAddr, "127.0.0.1") {
 			pay, _ := strconv.ParseFloat(params.Get("pay"), 64)
 			name := params.Get("name")
 			name = url.QueryEscape(name)
-			employees.NewEmployee(strings.ReplaceAll(name, "+", "%20"), pay, r.RemoteAddr)
-		}
+			employees.NewEmployee(strings.ReplaceAll(name, "+", "%20"), pay)
 		http.Redirect(w, r, "all", http.StatusSeeOther)
 		return
 	}
@@ -97,9 +95,7 @@ func allWebPage(w http.ResponseWriter, r *http.Request) {
 			http.Redirect(w, r, "../all", http.StatusSeeOther)
 			return
 		}
-		if name != "James+Graham" {
 			employees.TerminateEmployee(*u)
-		}
 		http.Redirect(w, r, "../all", http.StatusSeeOther)
 	}
 	return

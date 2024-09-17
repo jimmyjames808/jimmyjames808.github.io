@@ -10,7 +10,6 @@ type Employee struct {
 	Shifts      []Shift    `json:"shifts"`
 	PayPerHour  float64    `json:"payPerHour"`
 	CurrentPay  float64    `json:"currentPay"`
-	Ip          string     `json:"ip"`
 	OwnerStruct *Employees `json:"-"`
 }
 
